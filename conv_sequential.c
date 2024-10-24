@@ -30,7 +30,8 @@ int main() {
     }
     end = omp_get_wtime();
     sequen_time = end - start;
-    printf("sequen time : %f", sequen_time);
+
+    printf("sequen time : %f\n", sequen_time);
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         printf("%d\n",R[i]);
     }

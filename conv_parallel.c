@@ -30,7 +30,7 @@ int main(){
     }
     end = omp_get_wtime();
     parallel_time = end - start;
-    printf("parallel time : %f", parallel_time);
+    printf("parallel time : %f\n", parallel_time);
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         printf("%d\n",R[i]);
     }
