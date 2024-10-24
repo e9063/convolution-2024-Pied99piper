@@ -18,7 +18,7 @@ jobs:
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: case_demo
-        setup-command: gcc-14 -fopenmp conv_sequential.c -o conv_sequential
+        setup-command: gcc conv_sequential.c -o conv_sequential
         command: "./conv_sequential"
         input: |-
           8 5
@@ -48,7 +48,7 @@ jobs:
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: case_easy1
-        setup-command: gcc-14 -fopenmp conv_sequential.c -o conv_sequential
+        setup-command: gcc conv_sequential.c -o conv_sequential
         command: "./conv_sequential"
         input: |-
           30 5
@@ -122,7 +122,7 @@ jobs:
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: case_easy2
-        setup-command: gcc-14 -fopenmp conv_sequential.c -o conv_sequential
+        setup-command: gcc conv_sequential.c -o conv_sequential
         command: "./conv_sequential"
         input: |-
           100 10
