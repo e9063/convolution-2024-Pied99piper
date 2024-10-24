@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-// #include <omp.h>
-// #include <unistd.h>
+#include <omp.h>
+#include <unistd.h>
 
 int main() {
     int NA, NF;
@@ -20,7 +20,7 @@ int main() {
         scanf("%d", &F[i]);
     }
 
-    // start = omp_get_wtime();
+    start = omp_get_wtime();
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         int t = 0;
         for (int j = 0 ; j < NF ; j++) {
@@ -28,10 +28,10 @@ int main() {
         }
         R[i] = t;
     }
-    // end = omp_get_wtime();
-    // sequen_time = end - start;
+    end = omp_get_wtime();
+    sequen_time = end - start;
 
-    // printf("sequen time : %f\n", sequen_time);
+    printf("sequen time : %f\n", sequen_time);
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         printf("%d\n",R[i]);
     }

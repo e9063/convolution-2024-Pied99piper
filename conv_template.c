@@ -17,9 +17,8 @@ int main(){
     for(int i = 0; i < NF; i++){
         scanf("%d", &F[i]);
     }
-
+    
     // ---- end input and malloc----
-
     int* R = (int*)malloc((NA - NF + 1) * sizeof(int));
     start = omp_get_wtime();
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
