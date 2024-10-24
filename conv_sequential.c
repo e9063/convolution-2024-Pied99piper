@@ -1,26 +1,25 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <omp.h>
 #include <unistd.h>
 
-int main(){
-    // ---- input and malloc A, F ----
+int main() {
     int NA, NF;
     double start,end;
-    scanf("%d %d", &NA, &NF);
-    int *A = malloc(sizeof(int) * NA);
-    int *F = malloc(sizeof(int) * NF);
+    double sequen_time;
+    scanf("%d %d", &NA, &NF); 
+    int* A = (int*)malloc(NA * sizeof(int));
+    int* F = (int*)malloc(NF * sizeof(int));
+    int* R = (int*)malloc((NA - NF + 1) * sizeof(int));
 
-    for(int i = 0; i < NA; i++){
+    for (int i = 0; i < NA; i++) {
         scanf("%d", &A[i]);
     }
-    for(int i = 0; i < NF; i++){
+
+    for (int i = 0; i < NF; i++) {
         scanf("%d", &F[i]);
     }
 
-    // ---- end input and malloc----
-
-    int* R = (int*)malloc((NA - NF + 1) * sizeof(int));
     start = omp_get_wtime();
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         int t = 0;
@@ -31,12 +30,13 @@ int main(){
     }
     end = omp_get_wtime();
     sequen_time = end - start;
+    printf("sequen time : %f", sequen_time);
+    for (int i = 0 ; i < NA - NF + 1 ; i++) {
+        printf("%d\n",R[i]);
+    }
 
-    // ---- free memory ----
     free(F);
     free(A);
     free(R);
-    // ---- end free ----
     return 0;
 }
-
