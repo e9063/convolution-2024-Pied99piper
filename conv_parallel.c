@@ -36,6 +36,7 @@ int main(){
         printf("%d\n",R[i]);
     }
     
+    free(FF);
     free(F);
     free(A);
     free(R);
