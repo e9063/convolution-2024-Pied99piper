@@ -4,7 +4,6 @@
 #include <unistd.h>
 
 int main(){
-    // ---- input and malloc A, F ----
     int NA, NF;
     double start, end, parallel_time;
     scanf("%d %d", &NA, &NF);
@@ -21,7 +20,7 @@ int main(){
     int* R = (int*)malloc((NA - NF + 1) * sizeof(int));
     start = omp_get_wtime();
     omp_set_num_threads(4);
-    #pragma omp parallel for
+    #pragma omp parallel for schedule(static)
     for (int i = 0; i < NA - NF + 1; i++) {
         R[i] = 0;
         for (int j = 0; j < NF; j++) {
@@ -30,7 +29,8 @@ int main(){
     }
     end = omp_get_wtime();
     parallel_time = end - start;
-    printf("parallel time : %f\n", parallel_time);
+
+    // printf("parallel time : %f\n", parallel_time);
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         printf("%d\n",R[i]);
     }
