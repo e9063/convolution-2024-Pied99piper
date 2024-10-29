@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-// #include <omp.h>
-// #include <unistd.h>
+#include <omp.h>
+#include <unistd.h>
 
 int main() {
     int NA, NF;
@@ -10,7 +10,6 @@ int main() {
     scanf("%d %d", &NA, &NF); 
     int* A = (int*)malloc(NA * sizeof(int));
     int* F = (int*)malloc(NF * sizeof(int));
-    int* R = (int*)malloc((NA - NF + 1) * sizeof(int));
 
     for (int i = 0; i < NA; i++) {
         scanf("%d", &A[i]);
@@ -19,19 +18,21 @@ int main() {
     for (int i = 0; i < NF; i++) {
         scanf("%d", &F[i]);
     }
+    
+    int *FF = (int*)malloc(NF * sizeof(int));
+    for (int j = 0 ; j < NF ; ++j) {
+        FF[i] = F[NF - 1 - j]
+    }
 
-    // start = omp_get_wtime();
+    int* R = (int*)malloc((NA - NF + 1) * sizeof(int));
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         int t = 0;
         for (int j = 0 ; j < NF ; j++) {
-            t += A[i + j] * F[NF - 1 - j];
+            t += A[i + j] * FF[j];
         }
         R[i] = t;
     }
-    // end = omp_get_wtime();
-    // sequen_time = end - start;
-
-    // printf("sequen time : %f\n", sequen_time);
+    
     for (int i = 0 ; i < NA - NF + 1 ; i++) {
         printf("%d\n",R[i]);
     }
